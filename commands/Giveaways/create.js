@@ -13,8 +13,8 @@ class GCreate extends Command {
     }
 
     async run(message, args, Discord) {
-        if (!message.member.hasPermission("MANAGE_GUILD") && !message.member.roles.cache.some(r => r.name.toLowerCase() === "giveaway")) return message.channel.send("❌ | You don't have `MANAGE_GUILD` permission or `Giveaway` role to create giveaways!");
-        if (this.client.GiveawayManager.giveaways.filter((g) => g.guildID === message.guild.id && !g.ended).length + 1 > 3) return message.channel.send("❌ | Max giveaway limit `3` reached! Please try again later.");
+        if (!message.member.hasPermission("MANAGE_GUILD") && !message.member.roles.cache.some(r => r.name.toLowerCase() === "giveaway")) return message.channel.send("*Permissions manquantes.*");
+        if (this.client.GiveawayManager.giveaways.filter((g) => g.guildID === message.guild.id && !g.ended).length + 1 > 3) return message.channel.send("*Il est impossible de faire plus de 3 giveaways.*");
         let time = args[0];
         if (!time) return message.channel.send("*Mauvais usage de la commande, faîtes : #create <temps> <winner> <price>.*");
         if (ms(time) > ms("10d")) {
