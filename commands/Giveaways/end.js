@@ -12,7 +12,7 @@ class GEnd extends Command {
     }
 
     async run(message, args, Discord) {
-        if (!message.member.hasPermission("MANAGE_GUILD") && !message.member.roles.cache.some(r => r.name.toLowerCase() === "giveaway")) return message.channel.send("❌ | You don't have `MANAGE_GUILD` permission or `Giveaway` role to manage giveaways!");
+        if (!message.member.hasPermission("MANAGE_GUILD") && !message.member.roles.cache.some(r => r.name.toLowerCase() === "giveaway")) return message.channel.send("*Permissions manquantes.*");
         let id = args[0];
         if (!id) return message.channel.send("*Il faut indiquer l'identifient du giveaway.*");
         let hasGiveaway = this.client.GiveawayManager.giveaways.find((g) => g.messageID === id);
